@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Insights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Header styles */
+        .header {
+            display: flex;
+            justify-content: space-between; /* Space between logo and login button */
+            align-items: center; /* Center items vertically */
+            padding: 10px 20px;
+            margin-bottom: 10px; /* Space below the header */
+        }
+
+        /* Navigation links styles */
+        .nav-links {
+            display: flex;
+            gap: 15px; /* Space between links */
+            color: #844CAF; /* Link color */
+            font-size: 16px; /* Font size */
+        }
+
+        .nav-links a {
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Use inherited color */
+            transition: color 0.3s; /* Transition for hover effect */
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50; /* Change color on hover */
+        }
+
+        /* Style for the login button */
+        .login-button {
+            background-color: white; /* White background */
+            border: 2px solid #844CAF; /* Green border */
+            color: #844CAF; /* Green text color */
+            padding: 10px 20px; /* Padding */
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px; /* Font size */
+            border-radius: 4px; /* Rounded corners */
+            transition-duration: 0.4s; /* Transition effect */
+        }
+
+        .login-button:hover {
+            background-color: #844CAF; /* Change background on hover */
+            color: white; /* Change text color to white on hover */
+        }
+
+        /* Center images */
+        .image-container {
+            text-align: right;
+            margin: 10px 0; /* Adjust margin to move the image closer to the header */
+        }
+
+        /* Logo styles */
+        .logo {
+            height: 70px; /* Increased height for the logo */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        /* Market Insights Header Styles */
+        h1 {
+            font-size: 36px; /* Increased font size */
+            font-weight: bold; /* Bold text */
+            color: #844CAF; /* Green color */
+            margin: 20px 0; /* Space above and below the header */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Subtle text shadow for depth */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- Logo linking to Market Insights info page -->
+        <a href="{{ url_for('market_insights_info') }}">
+            <img src="{{ url_for('static', filename='images/market_insights_logo.jpg') }}" alt="Market Insights Logo" class="logo">
+        </a>
+
+        <!-- Navigation links -->
+        <div class="nav-links">
+            <a href="#">About Us</a>
+            <a href="#">Pricing</a>
+            <a href="#">News</a>
+        </div>
+
+        <!-- Login button -->
+        <a href="{{ url_for('login') }}" class="login-button">Login</a>
+    </div>
+
+    <h1>Market Insights</h1>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='images/market_insights.jpg') }}" alt="Market Insights" style="width: 50%; height: auto;">
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Market Insights. All rights reserved.</p>
+    </footer>
+</body>
+</html>
