@@ -9,8 +9,8 @@ app.secret_key = 'your_secret_key'
 db_config = {
     'host': 'localhost',
     'database': 'users',
-    'user': 'market_in1',
-    'password': 'Maya@10081009'
+    'user': 'XXXXXXXXXX',
+    'password': 'XXXXXXXXX'
 }
 @app.route('/market_insights_info')
 def market_insights_info():
