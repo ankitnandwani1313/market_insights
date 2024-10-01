@@ -12,6 +12,7 @@
             margin: 0;
             padding: 20px;
             text-align: center;
+            position: relative; /* Enable positioning for the sidebar */
         }
 
         /* Header styles */
@@ -29,6 +30,8 @@
             gap: 15px; /* Space between links */
             color: #844CAF; /* Link color */
             font-size: 16px; /* Font size */
+            margin-left: auto; /* Push links to the right */
+            margin-right: 20px; /* Add some space from the right */
         }
 
         .nav-links a {
@@ -59,6 +62,52 @@
             color: white; /* Change text color to white on hover */
         }
 
+        /* Sidebar styles */
+        .sidebar {
+            height: 100%; /* Full height */
+            width: 250px; /* Width of the sidebar */
+            position: fixed; /* Fixed to the left */
+            z-index: 1; /* Sit on top */
+            top: 0; /* Stay at the top */
+            left: -250px; /* Hide sidebar initially */
+            background-color: #ffffff; /* Background color */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            transition: 0.3s; /* Transition effect */
+            padding-top: 20px; /* Top padding */
+        }
+
+        .sidebar a {
+            padding: 10px 15px; /* Padding for links */
+            text-decoration: none; /* No underline */
+            font-size: 16px; /* Font size */
+            color: #844CAF; /* Link color */
+            display: block; /* Block display for links */
+            transition: background-color 0.3s; /* Background color transition */
+        }
+
+        .sidebar a:hover {
+            background-color: #f1f1f1; /* Background color on hover */
+        }
+
+        /* Overlay styles */
+        .overlay {
+            position: fixed; /* Fixed position */
+            top: 0; /* Start at the top */
+            left: 0; /* Start at the left */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: none; /* Hidden by default */
+            z-index: 0; /* Behind the sidebar */
+        }
+
+        .open-btn {
+            position: absolute; /* Position relative to the body */
+            top: 20px; /* Top distance */
+            left: 20px; /* Left distance */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
         /* Center images */
         .image-container {
             text-align: right;
@@ -84,7 +133,7 @@
 <body>
     <div class="header">
         <!-- Logo linking to Market Insights info page -->
-        <a href="{{ url_for('market_insights_info') }}">
+        <a href="javascript:void(0);" class="open-btn" onclick="toggleSidebar()">
             <img src="{{ url_for('static', filename='images/market_insights_logo.jpg') }}" alt="Market Insights Logo" class="logo">
         </a>
 
@@ -105,8 +154,36 @@
         <img src="{{ url_for('static', filename='images/market_insights.jpg') }}" alt="Market Insights" style="width: 50%; height: auto;">
     </div>
 
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <h2>Menu</h2>
+        <a href="#">Generate Report</a>
+        <a href="#">View Stocks</a>
+        <a href="#">Insights Analytics</a>
+        <a href="#">Company History</a>
+        <a href="{{ url_for('signup') }}">Sign Up</a>
+        <a href="#">Contact Us</a>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
     <footer>
         <p>&copy; 2024 Market Insights. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("overlay");
+            if (sidebar.style.left === "-250px") {
+                sidebar.style.left = "0"; // Show sidebar
+                overlay.style.display = "block"; // Show overlay
+            } else {
+                sidebar.style.left = "-250px"; // Hide sidebar
+                overlay.style.display = "none"; // Hide overlay
+            }
+        }
+    </script>
 </body>
 </html>
